@@ -1,0 +1,13 @@
+gcc -o pam_test.so -shared -fPIC *.c -lpam -les_3000gm
+cp pam_test.so /usr/lib64/security/
+
+vim /etc/pam.d/login 
+add one line
+auth       required    pam_test.so
+
+new a file :/etc/pam.d/usbkey.conf 
+context:
+	username:usbkey_serino
+
+
+
